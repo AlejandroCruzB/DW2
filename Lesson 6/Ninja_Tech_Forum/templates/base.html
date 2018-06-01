@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>
+        {% block title %}{% endblock title %} - Ninja Tech Forum
+    </title>
+
+    <!-- Bootstrap -->
+    <link href="/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="../assets/custom/css/style.css">
+</head>
+
+<body>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Navegador</span>
+                        <span class="icon-bar">1</span>
+                        <span class="icon-bar">2</span>
+                        <span class="icon-bar">3</span>
+                    </button>
+                    <a class="navbar-brand" href="/">Ninja Tech Forum</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">About</a> </li>
+                        <!--<li><a href="#">Login</a> </li> Lo eliminamos para crear el login-->
+                        {% if logout_url %}
+                            <li><a href="#">{{ user.email() }}</a></li>
+                            <li><a href="/topic/add">Add topic</a></li>
+                            <li><a href="{{ logout_url }}">Logout</a></li>
+                        {% elif login_url %}
+                            <li><a href="{{ login_url }}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+<div class="container-fluid"> <!-- el container normal dejaria un margen grande a los lados, y el container-fluid deja un margen mucho mas pequeño, adaptandose a los row que esten dentro-->
+
+
+        {% block content %}
+        {% endblock content %}
+
+
+</div>
+
+
+ <div class="barraaceptacion" style="display: block;">
+
+  {% if cookies %}<!-- Si las cookies estan aceptadas, podemos poner algo aqui  -->
+    <div class="inner">Cookies aceptadas</div>
+{% else %}<!-- Si no estan aceptadas las cookies, aparecera esto  -->
+        <div class="inner">
+        Solicitamos su permiso para obtener datos estadísticos de su navegación en esta web, en cumplimiento del Real
+        Decreto-ley 13/2012. Si continúa navegando consideramos que acepta el uso de cookies.
+            <form action="/set-cookie" method="post">
+                <button class="btn btn-success btn-xs">I accept</button>
+                <a href="http://politicadecookies.com" target="_blank" class="info">Más información</a>
+            </form>
+        </div>
+{% endif %}
+
+ </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

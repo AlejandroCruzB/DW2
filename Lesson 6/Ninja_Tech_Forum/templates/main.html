@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Main Page{% endblock title %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1>Ninja Tech Forum</h1>
+    <p>Welcome to Ninja Tech Forum - the best forum for tech fans. Coming soon!</p>
+</div>
+
+<div class="row-fluid">
+    <div class="col-lg-12">
+        <table class="table">
+            <thead class="head2">
+                <tr>
+                    <th>Topic title</th>
+                    <th>Author</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for topic in topic %}
+                <tr>
+                    <td><a href="/topic/{{ topic.key.id() }}">{{ topic.title }}</a></td>
+                    <td>{{ topic.author_email }}</td>
+                    <td>{{ topic.created.strftime('Creado a las %H:%M el %d.%m.%Y') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
+
