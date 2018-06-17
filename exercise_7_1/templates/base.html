@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>
+        {% block title %}{% endblock title %} - Ninja Tech Forum
+    </title>
+
+    <!-- Bootstrap -->
+    <link href="/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="../assets/custom/css/style.css">
+</head>
+
+<body>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Navegador</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home"></span>  Ninja Tech Forum</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="https://www.google.es"><span class="glyphicon glyphicon-eye-open"></span> About we</a></li>
+
+                        {% if logout_url %}
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.email() }}</a></li>
+                            <li><a href="/topic/add"><span class="glyphicon glyphicon-pencil"></span> Add topic</a></li>
+                            <li><a href="{{ logout_url }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        {% elif login_url %}
+                            <li><a href="{{ login_url }}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+<div class="container-fluid">
+
+
+        {% block content %}
+        {% endblock content %}
+
+
+</div>
+
+
+ <div class="barraaceptacion" style="display: block;">
+
+  {% if cookies %}
+     <div class="inner">
+         <div class="cookacept">
+         <b>Cookies aceptadas</b>
+         </div>
+     </div>
+{% else %}
+        <div class="inner">
+        <p>Solicitamos su permiso para obtener datos estadísticos de su navegación en esta web, en cumplimiento del Real
+            Decreto-ley 13/2012. Si continúa navegando consideramos que acepta el uso de cookies.</p>
+            <form action="/set-cookie" method="post">
+                <button class="btn btn-success btn-xs">I accept</button>
+                <a href="http://politicadecookies.com" target="_blank" class="info">Más información</a>
+            </form>
+        </div>
+{% endif %}
+
+ </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
