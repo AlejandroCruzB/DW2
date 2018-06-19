@@ -1,0 +1,68 @@
+.barraaceptacion {
+    display:none;
+    position:fixed;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    padding:10px;
+    width:100%;
+    text-align:center;
+    min-height:40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:#fff;
+    z-index:99999;
+}
+
+.inner {
+    width: 100%;
+    padding-bottom: 10px;
+    font-family:verdana;
+    font-size: 12px;
+}
+
+
+.inner a.info {
+    padding-left:5px;
+    text-decoration:none;
+    color:#faff00;
+}
+
+.head2 {
+    text-align: center; /*NO me centra el texto, utilizamos el head directamnte sin clase ni nada y SI funciona*/
+    color: #424242;
+    font-family: "Verdana", "Arial", "Helvetica";
+
+}
+
+.panel-title {
+    text-align: center;
+    font-size: 25px;
+}
+
+.volver {
+    float: right;
+
+
+}
+
+.cookacept {
+    margin-top: 12px;
+}
+
+/*th {
+    text-align: center; > para poner los encabezados de la tabla centrado. Tambien podemos poner en el html la clase "text-center" <th class="text-center">
+}*/
+
+
+.panel-body{
+    word-wrap: break-word;
+}
+
+#input_short{
+     width: 200px;
+     height: 25px;
+  }
+
+#prueba{
+    text-align: center;
+}

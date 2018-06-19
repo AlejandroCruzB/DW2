@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Add new topic{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-offset-3 col-md-6">
+        <div class="col-md-offset-4 cold-md-4">
+        <h1><b><ins>Add new topic</ins></b></h1>
+            </div>
+        <form method="post">
+            <input type="hidden" name="paco" value="{{csrf_token}}"> <!-- ponemos paco para notar la diferencia, en el ejemplo es csrf-token-->
+            <div class="form-group">
+                <label><h4><b>Title</b></h4></label>
+                <input id="titulo_topic" type="text" class="form-control" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label><h4><b>Text</b></h4></label>
+                <textarea id="text_topic" name="text" class="form-control" rows="6" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label><h4><b>Por favor, indique cuánto suma 2 y 8.</b></h4></label>
+                <br>
+                <input class="form-control" id="input_short" type="text" name="human" required>
+            </div>
+            <div class="col-md-offset-6">
+            <button type="submit" class="btn btn-success" id="result">Submit</button>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+       $(document).ready(function() {
+            var result = $("#result");
+            var input = $("#input_short");
+
+            result.click(function(block) {
+                if (input.val() === "10")
+                {result.hide();
+                } else {
+                alert("Error, introduzca el resultado correcto");
+                block.preventDefault();
+            }
+        });
+
+        addTopicTitle = $("#titulo_topic");
+        addTopicTitle.attr("placeholder", "Add topic title");
+
+        addTopicText = $("#text_topic");
+        addTopicText.attr("placeholder", "Add topic text");
+
+        addInput = $("#input_short");
+        addInput.attr("placeholder", "Please, insert the result");
+
+    });
+</script>
+{% endblock scripts %}
